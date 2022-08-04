@@ -43,7 +43,7 @@ It will normalize the peptide intensities against the protein intensities and ap
 1. You probably had already downloaded this repo and initialized an RStudio project to execute the previous script... Then:
 2. Add the `protein.tsv` file from your Fragpipe search into the `data/` folder.
 3. Open the `normalize_peptide_abund_by_prot_abund.R` script.
-4. Click on `Source`, on the top right corned.
+4. Click on `Source`, on the top right corner.
 
 ### What does it do? 
 
