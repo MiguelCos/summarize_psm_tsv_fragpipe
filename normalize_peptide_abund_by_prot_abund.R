@@ -176,11 +176,11 @@ scaled_mat_rat2 <- scale(log2_mat_rat2,
   abs(.) # log2 values of fractions are negative; take absolute values
 
 boxplot(mat_ratios2,
-        main = "Boxplot of Norm ratio of Peptide to Protein Intensity",
+        main = "Boxplot of Fraction of Peptide intensity over protein",
         sub  = "Before log2 and median centering")
 
 boxplot(scaled_mat_rat2,
-        main = "Boxplot of Norm ratio of Peptide to Protein Intensity",
+        main = "Boxplot of Fraction of Peptide intensity over protein",
         sub  = "After log2 and median centering")
 
 
@@ -204,11 +204,11 @@ scaled_mat_rat3 <- scale(log2_mat_rat3,
   abs(.) # log2 values of fractions are negative; take absolute values
 
 boxplot(mat_ratios3,
-        main = "Boxplot of Norm ratio of Peptide to Protein Intensity",
+        main = "Boxplot of peptide/PSM intensities - No protein-level correction",
         sub  = "Before log2 and median centering")
 
 boxplot(scaled_mat_rat3,
-        main = "Boxplot of Norm ratio of Peptide to Protein Intensity",
+        main = "Boxplot of peptide/PSM intensities - No protein-level correction",
         sub  = "After log2 and median centering")
 
 
