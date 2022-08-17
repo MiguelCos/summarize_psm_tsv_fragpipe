@@ -87,6 +87,33 @@ It will:
 6. Generate an abundance matrix with 1 row per protein and 1 column per sample/TMT reporter ion, with summed protein intensities. 
 7. Generated file at: `output/abundance_mat_summed_best_psm_intensities_per_protein.tsv`.
 
+## `purification_n_median_centering_log2.R`
+
+After summarizing the peptides and quantitative features from the `psm.tsv` file, this script would help you process the intensity values from the peptide list for:
+
+- Median centering and log2 standardization
+- 'Purification' of the quantitation.
+
+For purification, we multiply the purity value of each peptide (related to isotopic purity) times to reported intensity. The idea is to get the 'usable' fraction of the intensity values that mostly corresponds to the reported peptide.
+
+### How to use the script? 
+
+1. You probably had already downloaded this repo and initialized an RStudio project to execute the previous script... Then:
+2. Open the `purification_n_median_centering_log2.R` script.
+3. Click on `Source`, on the top right corner.
+
+### What does it do? 
+
+It will:
+
+1. Load the `best_modified_peptides_psm.tsv` file (this is the PSM-summarized peptide list generated with the previous script).
+2. Map the sample names of the annotation file to the column names of the TMT reporter ion intensities in the PSM file.
+3. Select quantitative columns from the peptide/PSM file.
+4. Apply the 'purification' on each column.
+5. Standardize the intensity values by median centering and log2 transformation.
+  Note: It will do this as well for non-purified intensities.
+6. Generate 2 abundance matrix with 1 row per modified peptide and 1 column per sample/TMT reporter ion, with standardized intensities, with and without 'purification'.
+7. Generated files at: `output/abundance_mat_standardized_n_non_purified.tsv.tsv` and `output/abundance_mat_standardized_n_purified.tsv.tsv`
 
 
 
