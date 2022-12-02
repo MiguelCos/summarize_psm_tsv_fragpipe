@@ -15,7 +15,8 @@ This simple script is currently only working for one-mixture TMT experiments.
 3. Add your `psm.tsv` and `annotation.txt` file in the `data/` folder.
   Note: the `annotation.txt` file is the one generated and/or required by TMT integrator for summarization.
 4. Open the `summarize_psm_tsv_fragpipe.R` script.
-5. Click on `Source`, on the top right corner.
+5. Modify line 8 and line 10 to define your desired Peptide probability and Purity cut-off.
+6. Click on `Source`, on the top right corner.
 
 ### What does it do? 
 
@@ -26,7 +27,8 @@ It will:
 3. Map the sample names of the annotation file to the column names of the TMT reporter ion intensities in the PSM file.
 4. Sum the total reporter ion intensities.
 5. Filter the PSM file to keep only the best PSM per modified peptide under the following criteria:
-  - Only PSMs with PeptideProbability > 0.9.
+  - Only PSMs with PeptideProbability > User defined PeptideProbability.
+  - Only PSMs with Purity > User defined Purity.
   - Only PSMs with summed reporter ion intensities > 0.
   - If one modified peptide has several redundant PSMs, select the PSM with best Purity.
   - If one modified peptide has severak reduntant PSMs with the same purity, then select the PSM with the highest summed reporter ion intensity.

@@ -1,6 +1,13 @@
 # script to summarize the psm.tsv table from Fragpipe to keep peptide + modification
 # Miguel Cosenza
-# v 0.1
+# v 0.2
+
+# define cut-offs for purity and PeptideProphet Probability
+# please modify accordingly 
+
+peptide_probability <- 0.9
+
+minimal_purity <- 0.5
 
 # required packages ----
 
@@ -14,11 +21,7 @@ psms <- read_tsv(here("data/psm.tsv"))
 
 # load data annotation
 annot <- read_delim(here("data/annotation.txt"),
-                    col_names = FALSE) %>%
-  # set column names to channel and sample respectively
-  # this is necessary to select the TMT channel columns from the psm.tsv
-  dplyr::rename(channel = X1, sample = X2)
-
+                    col_names = FALSE) 
 
 # pre-process annotation file --------------------------
 
@@ -62,7 +65,9 @@ psm_mod2 <- psm_mod1 %>%
   # keep only psms with summed TMT intensity > 0
   filter(summ_int > 0) %>% 
   # keep only psms with peptideProphet prob > 0.9
-  filter(`PeptideProphet Probability` > 0.9) %>%
+  filter(`PeptideProphet Probability` > peptide_probability) %>%
+  # keep only psms with purity > minimal_purity
+  filter(Purity > minimal_purity) %>%
   # group by modified peptide
   group_by(`Modified Peptide`) %>% 
   # if several PSMs to the same modified peptide, select one with best Purity
